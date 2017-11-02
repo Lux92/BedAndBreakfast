@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<h1>Rooms List</h1>
+<p *ngIf="!rooms"><em>Loading...</em></p>
+<table class='table' *ngIf="rooms">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Avaible Posts</th>
+            <th>Price</th>
+         
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of rooms">
+            <td>{{room.num}}</td> 
+            <td>{{ room.name }}</td>
+           <td>{{ room.capacity  }}
+               <td>{{room.price}}</td>
+         
+        </tr>
+    
+    </tbody>
+</table>
+<div id="add_room">
+    <form ng-submit="send_form()" action="">
+        <p>Num <input ng-model="room.num" type="number"  /></p>
+        <p>Name <input ng-model="room.name" type="text"  />  </p>
+        <p>Capacity <input ng-model="room.capacity" type="number" /> </p>
+        <p>Price <input ng-model="room.price" type="number"  /></p>
+        
+    
+       <!--  <p>    </p> -->
+            <button (click)="put(room)" > Add </button>
+     
+    </form>
+</div>

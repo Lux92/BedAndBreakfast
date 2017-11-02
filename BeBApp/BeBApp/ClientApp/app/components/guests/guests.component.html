@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<h1>Guests List</h1>
+<p *ngIf="!guests"><em>Loading...</em></p>
+<table class='table' *ngIf="guests">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Fiscal Code</th>
+            <th>Cell Number</th>
+            <th>Gender</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let guest of guests">
+            <td>{{guest.id}}</td>
+            <td>{{ guest.name }}</td>
+            <td>{{ guest.surname }}</td>
+            <td>{{ guest.fiscalCode }}</td>
+            <td>{{ guest.cellNumb }}</td>
+            <td>{{ guest.gender }}</td>
+
+        </tr>
+    </tbody>
+</table>
+

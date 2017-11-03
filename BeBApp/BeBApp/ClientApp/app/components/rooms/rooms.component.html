@@ -1,40 +1,31 @@
-﻿<!DOCTYPE html>
-
-<h1>Rooms List</h1>
+﻿<h1>Rooms List <button (click)="addNewRoom()"> + </button></h1>
 <p *ngIf="!rooms"><em>Loading...</em></p>
-<table class='table' *ngIf="rooms">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>Name</th>
-            <th>Avaible Posts</th>
-            <th>Price</th>
-         
-            
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let room of rooms">
-            <td>{{room.num}}</td> 
-            <td>{{ room.name }}</td>
-           <td>{{ room.capacity  }}
-               <td>{{room.price}}</td>
-         
-        </tr>
-    
-    </tbody>
-</table>
-<div id="add_room">
-    <form ng-submit="send_form()" action="">
-        <p>Num <input ng-model="room.num" type="number"  /></p>
-        <p>Name <input ng-model="room.name" type="text"  />  </p>
-        <p>Capacity <input ng-model="room.capacity" type="number" /> </p>
-        <p>Price <input ng-model="room.price" type="number"  /></p>
-        
-    
-       <!--  <p>    </p> -->
-            <button (click)="put(room)" > Add </button>
-     
-    </form>
+<div class="room-home">
+    <div class="rooms-list" *ngIf="rooms">
+        <div *ngFor="let room of rooms"
+             [class.selected]="room === selecteRoom"
+             (click)="onSelect(room)"
+             [hidden]="room.deleted">
+            <span class="badge">{{room.num || '-' }}</span> {{room.name}} <span> {{room.capacity}}</span>  {{room.price}} <span>{{room.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(room)">delete</span>
+</div>
+    </div>
+    <div *ngIf="selectedRoom" class="room-detail">
+        <h2 *ngIf="selectedRoom.num > 0">{{selectedRoom.name}} {{selectedRoom.capacity}}  {{selectedRoom.price}}</h2>
+        <h2 *ngIf="!selectedRoom.name">New Room</h2>
+        <div>
+            <label>Name: </label>
+            <input [(ngModel)]="selectedRoom.name" placeholder="name" />
+        </div>
+        <div>
+            <label>Capacity: </label>
+            <input [(ngModel)]="selectedRoom.capacity" placeholder="capacity" />
+        </div>
+        <div>
+            <label>Price: </label>
+            <input [(ngModel)]="selectedRoom.price" placeholder="price" />
+        </div>
+    </div>
+</div>
+<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+    <span>SAVE</span>
 </div>

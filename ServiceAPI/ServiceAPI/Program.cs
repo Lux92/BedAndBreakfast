@@ -58,7 +58,7 @@ namespace ServiceAPI
             Task restService = host.RunAsync();
 
             // System.Diagnostics.Process.Start("chrome.exe", "http://localhost/netcoreapp2.0/corsoing/");
-            System.Diagnostics.Process.Start("cmd", "/C start http://localhost/netcoreapp2.0/corsoing/");
+          //  System.Diagnostics.Process.Start("cmd", "/C start http://localhost/netcoreapp2.0/corsoing/");
             restService.Wait();
 
         }

@@ -84,8 +84,11 @@ namespace ServiceAPI
             using (var context = new BeBDbContext())
             {
                 var room = await context.Rooms.FirstOrDefaultAsync(x => x.Num == id);
-                context.Rooms.Remove(room);
-                await context.SaveChangesAsync();
+                if (room != null)
+                {
+                    context.Rooms.Remove(room);
+                    await context.SaveChangesAsync();
+                }
                 return Ok();
 
 

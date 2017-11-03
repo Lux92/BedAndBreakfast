@@ -1,29 +1,43 @@
-﻿<!DOCTYPE html>
-
-<h1>Guests List</h1>
+﻿<h1>Guests List <button (click)="addNewGuest()"> + </button></h1>
 <p *ngIf="!guests"><em>Loading...</em></p>
-<table class='table' *ngIf="guests">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Fiscal Code</th>
-            <th>Cell Number</th>
-            <th>Gender</th>
-        </tr>
+<div class="guest-home">
+    <div class="guests-list" *ngIf="guests">
+        <div *ngFor="let guest of guests"
+             [class.selected]="guest === selecteGuest"
+             (click)="onSelect(guest)"
+             [hidden]="guest.deleted">
+            <span class="badge">{{guest.id || '-' }} </span>  {{guest.name}} <span> {{guest.surname}} </span> {{guest.fiscalCode}}<span>{{guest.cellNumb}} </span>  <span>{{guest.gender}} </span> <span>{{guest.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(guest)">delete</span>
+        </div>
+    </div>
+    <div *ngIf="selectedGuest" class="guest-detail">
+        <h2 *ngIf="selectedGuest.num > 0">{{selectedGuest.name}} {{selectedGuest.surname}}                          {{
+selectedGuest.fiscalcode}</h2>
+        <h2 *ngIf="!selectedGuest.name">New Guest</h2>
+        <div>
+            <label>Name: </label>
+            <input [(ngModel)]="selectedGuest.name" placeholder="name" />
+        </div>
+        <div>
+            <label>Surname: </label>
+            <input [(ngModel)]="selectedGuest.surname" placeholder="surname" />
+        </div>
+        <div>
+            <label>Fiscal Code: </label>
+            <input [(ngModel)]="selectedGuest.fiscalCode" placeholder="fiscalCode" />
+        </div>
+        <div>
+            <label>Cell Number: </label>
+            <input [(ngModel)]="selectedGuest.cellNumb" placeholder="cellNumb" />
+        </div>
+         <div>
+            <label>Gender: </label>
+            <input [(ngModel)]="selectedGuest.gender" placeholder="0" />
+        </div>
+    </div>
+</div>
+<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+    <span>SAVE</span>
+</div>
 
-    </thead>
-    <tbody>
-        <tr *ngFor="let guest of guests">
-            <td>{{guest.id}}</td>
-            <td>{{ guest.name }}</td>
-            <td>{{ guest.surname }}</td>
-            <td>{{ guest.fiscalCode }}</td>
-            <td>{{ guest.cellNumb }}</td>
-            <td>{{ guest.gender }}</td>
 
-        </tr>
-    </tbody>
-</table>
 

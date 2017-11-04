@@ -10,8 +10,7 @@
         </div>
     </div>
     <div *ngIf="selectedGuest" class="guest-detail">
-        <h2 *ngIf="selectedGuest.num > 0">{{selectedGuest.name}} {{selectedGuest.surname}}                          {{
-selectedGuest.fiscalcode}</h2>
+        <h2 *ngIf="selectedGuest.num > 0">{{selectedGuest.name}} {{selectedGuest.surname}}{{selectedGuest.fiscalcode}}</h2>
         <h2 *ngIf="!selectedGuest.name">New Guest</h2>
         <div>
             <label>Name: </label>

@@ -1,26 +1,36 @@
-﻿<!DOCTYPE html>
-
-<h1>Bookings List</h1>
+﻿<h1>Bookings List <button (click)="addNewBooking()"> + </button></h1>
 <p *ngIf="!bookings"><em>Loading...</em></p>
-<table class='table' *ngIf="bookings">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Date</th>
-            <th>Id Guest</th>
-            <th>Id Room</th>
-        
-        </tr>
+<div class="booking-home">
+    <div class="bookings-list" *ngIf="bookings">
+        <div *ngFor="let booking of bookings"
+             [class.selected]="booking === selecteBooking"
+             (click)="onSelect(booking)"
+             [hidden]="booking.deleted">
+            <span class="badge">{{booking.id || '-' }} </span>  {{booking.date}} <span> {{booking.id_guest}} </span> {{booking.id_room}}  <span>{{booking.hasChanges?'*':''}}</span><span class="badge" style="float: right;" (click)="delete(booking)">delete</span>
+        </div>
+    </div>
 
-    </thead>
-    <tbody>
-        <tr *ngFor="let booking of bookings">
-            <td>{{booking.id}}</td>
-            <td>{{ booking.date }}</td>
-            <td>{{ booking.id_guest }}</td>
-            <td>{{ booking.id_room }}</td>
-           
-        </tr>
-    </tbody>
-</table>
+    <div *ngIf="selectedBooking" class="booking-detail">
+        <h2 *ngIf="selectedBooking.num > 0">
+            {{selectedBooking.date}} {{selectedBooking.id_guest}}     {{selectedBooking.id_room}} </h2>
+        <h2 *ngIf="!selectedBooking.name">New Booking</h2>
+        <div>
+            <label>Date: </label>
+            <input [(ngModel)]="selectedBooking.date" placeholder="DD-MM-YYYY" />
+        </div>
+        <div>
+            <label>ID Guest: </label>
+            <input [(ngModel)]="selectedBooking.id_guest" placeholder="id_guest" />
+        </div>
+        <div>
+            <label>ID Room: </label>
+            <input [(ngModel)]="selectedBooking.id_room" placeholder="id_room" />
+        </div>
+        
+</div>
+<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="saveChanges()">
+    <span>SAVE</span>
+</div>
+
+
 

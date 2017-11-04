@@ -1,0 +1,80 @@
+Progetto di Modern concurrent data-oriented applications in C#.
+L'elaborato prevede la realizzazione semplificata di un sistema 
+che consenta la prenotazione di camere di un B&B.
+
+In particolare l'elaborato è stato realizzando tramite:
+1) MySQL per la gestione del Database
+2) Servizi REST 
+3) AngularJS per il front-end
+
+Il progetto permette di:
+1) Gestire le camere ( aggiunta,modifica e rimozione)
+2) Gestire gli ospiti ( aggiunta,modifica e rimozione)
+3) Gestione delle prenotazioni (aggiunta,modifica e rimozione)
+
+		CONFIGURAZIONE INIZIALE
+Il progetto è stato svolto utilizzando XAMPP per la gestione del server SQL.
+Le configurazione di accesso sono contenute nella cartella ServiceAPI
+in particolare nel file di contesto: BeBDbContest
+  
+	Nome del database BedAndBreackfast
+	Nome utente: root
+	Password: bandb
+
+Per cui per il corretto utilizzo è necessario configurare XAMPP o
+in alternativa direttamente il server MySQL con i dati di accesso 
+corretti.
+
+E' previsto ma non necessario un database già creato di StartUp
+denominato bedandbreakfast.sql, è possibile importarlo per 
+avere a disposizione degli elementi iniziali.
+(L'esportazione è stata fatta utilizzando PhPMyAdmin )
+
+Istruzioni:
+1) Avviare ServiceAPI ( Servizi REST )
+2) Avviare BeBApp	(Angular)
+
+
+		GESTIONE DELLE CAMERE
+Selezionando "Rooms" nel menù a destra verranno visualizzate 
+le camere presenti nel database. Per ogni camera è possibile
+modificare i vari campi ( nome,capienza e prezzo) attraverso
+l'apposito form a destra.
+Al termine delle modifica è necessario cliccare su "save" in 
+basso a destra.
+E' possibile aggiungere una nuova camera cliccando sul pulsante
+( + ) accanto all header "Rooms List".
+
+	Le camere sono caratterizzate dai seguenti campi:
+		1)Numero 
+		2)Nome
+		3)Capacità
+		4)Prezzo
+	
+		GESTIONE DEGLI OSPITI
+Selezionando "Guests" nell'appositò menu verrà
+visualizzata la lista degli ospiti e come per il
+caso precente sono puttibili tutte le operazioni.
+	
+	Gli ospiti sono caratterizzati da:
+		1)Id
+		2)Nome
+		3)Cognome	
+		4)Codice Fiscale
+		5)Numero di Telefono
+		6)Sesso
+
+Sesso è una variabile di tipo boolean è stato assunto
+true per uomo e false per donna.
+
+		GESTIONE DELLE PRENOTAZIONI
+E' infine possibile visualizzare le prenotazioni dall'appositio menù.
+Anche qui sono possibili tutte le operazioni viste precedentemente.
+In maniera semplificata una prenotazione è costituita da:
+
+		1)id
+		2)Data
+		3)Id dell'ospite
+		4)Id della camera
+
+	

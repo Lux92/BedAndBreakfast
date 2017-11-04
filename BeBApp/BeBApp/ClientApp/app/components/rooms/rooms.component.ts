@@ -122,6 +122,7 @@ delete (room: Room): void {
 }
 }
 class Room {
+    
     num: number;
 
     private _name: string = "";

@@ -68,7 +68,7 @@ Sesso è una variabile di tipo boolean è stato assunto
 true per uomo e false per donna.
 
 		GESTIONE DELLE PRENOTAZIONI
-E' infine possibile visualizzare le prenotazioni dall'appositio menù.
+E infine possibile visualizzare le prenotazioni dall'appositio menù.
 Anche qui sono possibili tutte le operazioni viste precedentemente.
 In maniera semplificata una prenotazione è costituita da:
 
